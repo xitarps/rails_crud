@@ -1,9 +1,18 @@
 <div>
   <h1>
-    Sistema de artigos
+    <%= link_to 'Sistema de artigos', root_path, id: 'header_title' %>
   </h1>
   <p>
-    <%= link_to "Artigo", posts_path %>
+    
+    <% if user_signed_in? %>
+      <%= current_user.email %> | 
+      <%= link_to "Artigos", posts_path %> | 
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+      <%= link_to 'Login', new_user_session_path %> |
+      <%= link_to 'Signup', new_user_registration_path %>
+    <% end %>
+    
   </p>
 </div>
 <hr>
