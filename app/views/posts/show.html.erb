@@ -8,3 +8,16 @@
   Descrição:
   <%= @post.description %>
 </p>
+
+<p>
+  Postado em:
+  <%= @post.created_at.strftime("%d/%m/%Y")  %>
+</p>
+
+<p>
+  Likes:
+  <span id="num_curtidas">
+    <%= @post.likes %>
+  </span>
+  <%= link_to 'Curtir', post_curtir_path(@post), remote: true %>
+</p>

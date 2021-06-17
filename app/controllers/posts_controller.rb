@@ -33,6 +33,15 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: msg if @post.destroy
   end
 
+  def like
+    @post = @post = Post.find(params[:post_id])
+    @post.update(likes: (@post.likes + 1))
+
+    respond_to do |format|
+      format.js { render partial: 'like' }
+    end
+  end
+
   private
 
   def post_params
